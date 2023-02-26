@@ -1,4 +1,4 @@
-package org.pytorch.demo.objectdetection;
+package org.pytorch.demo.objectdetection.helpers;
 
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
@@ -6,18 +6,16 @@ import android.graphics.Rect;
 import android.location.Location;
 import android.net.Uri;
 
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.tasks.Continuation;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.GeoPoint;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import org.pytorch.demo.objectdetection.MainActivity;
+import org.pytorch.demo.objectdetection.detection.ObjectDetectionActivity;
 import org.pytorch.demo.objectdetection.models.GarbagePoint;
+import org.pytorch.demo.objectdetection.models.Result;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -25,34 +23,22 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Date;
 
-class Result {
-    int classIndex;
-    Float score;
-    Rect rect;
-
-    public Result(int cls, Float output, Rect rect) {
-        this.classIndex = cls;
-        this.score = output;
-        this.rect = rect;
-    }
-};
-
 public class PrePostProcessor {
     // for yolov5 model, no need to apply MEAN and STD
-    static float[] NO_MEAN_RGB = new float[]{0.0f, 0.0f, 0.0f};
-    static float[] NO_STD_RGB = new float[]{1.0f, 1.0f, 1.0f};
+    public static float[] NO_MEAN_RGB = new float[]{0.0f, 0.0f, 0.0f};
+    public static float[] NO_STD_RGB = new float[]{1.0f, 1.0f, 1.0f};
 
     // model input image size
-    static int mInputWidth = 640;
-    static int mInputHeight = 640;
+    public static int mInputWidth = 640;
+    public static int mInputHeight = 640;
 
     // model output is of size 25200*(num_of_class+5)
-    private static int mOutputRow = 25200; // as decided by the YOLOv5 model for input image of size 640*640
-    private static int mOutputColumn = 6; // left, top, right, bottom, score and 80 class probability
-    private static float mThreshold = 0.60f; // score above which a detection is generated
-    private static int mNmsLimit = 15;
+    public static int mOutputRow = 25200; // as decided by the YOLOv5 model for input image of size 640*640
+    public static int mOutputColumn = 6; // left, top, right, bottom, score and 80 class probability
+    public static float mThreshold = 0.60f; // score above which a detection is generated
+    public static int mNmsLimit = 15;
 
-    static String[] mClasses;
+    public static String[] mClasses;
 
     // The two methods nonMaxSuppression and IOU below are ported from https://github.com/hollance/YOLO-CoreML-MPSNNGraph/blob/master/Common/Helpers.swift
 
@@ -64,7 +50,7 @@ public class PrePostProcessor {
      - limit: the maximum number of boxes that will be selected
      - threshold: used to decide whether boxes overlap too much
      */
-    static ArrayList<Result> nonMaxSuppression(ArrayList<Result> boxes, int limit, float threshold) {
+    public static ArrayList<Result> nonMaxSuppression(ArrayList<Result> boxes, int limit, float threshold) {
 
         // Do an argsort on the confidence scores, from high to low.
         boxes.sort(Comparator.comparing(o -> o.score));
@@ -124,7 +110,7 @@ public class PrePostProcessor {
     }
 
     @SuppressLint("MissingPermission")
-    static ArrayList<Result> outputsToNMSPredictions(float[] outputs, float imgScaleX, float imgScaleY, float ivScaleX, float ivScaleY, float startX, float startY, Bitmap image, Location location) {
+    public static ArrayList<Result> outputsToNMSPredictions(float[] outputs, float imgScaleX, float imgScaleY, float ivScaleX, float ivScaleY, float startX, float startY, Bitmap image, Location location) {
         ArrayList<Result> results = new ArrayList<>();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 

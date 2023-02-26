@@ -4,7 +4,7 @@
 // This source code is licensed under the BSD-style license found in the
 // LICENSE file in the root directory of this source tree.
 
-package org.pytorch.demo.objectdetection;
+package org.pytorch.demo.objectdetection.helpers;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -14,6 +14,8 @@ import android.graphics.Path;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
+
+import org.pytorch.demo.objectdetection.models.Result;
 
 import java.util.ArrayList;
 

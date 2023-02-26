@@ -1,4 +1,4 @@
-package org.pytorch.demo.objectdetection;
+package org.pytorch.demo.objectdetection.location;
 
 import android.content.Context;
 import android.location.Location;
@@ -10,8 +10,8 @@ public class FallbackLocationTracker  implements LocationTracker, LocationTracke
 
     private boolean isRunning;
 
-    private ProviderLocationTracker gps;
-    private ProviderLocationTracker net;
+    private final ProviderLocationTracker gps;
+    private final ProviderLocationTracker net;
 
     private LocationTracker.LocationUpdateListener listener;
 
@@ -84,7 +84,7 @@ public class FallbackLocationTracker  implements LocationTracker, LocationTracke
         if(lastLoc == null){
             update = true;
         }
-        else if(lastLoc != null && lastLoc.getProvider().equals(newLoc.getProvider())){
+        else if(lastLoc.getProvider().equals(newLoc.getProvider())){
             update = true;
         }
         else if(newLoc.getProvider().equals(LocationManager.GPS_PROVIDER)){

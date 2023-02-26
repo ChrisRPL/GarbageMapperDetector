@@ -4,7 +4,7 @@
 // This source code is licensed under the BSD-style license found in the
 // LICENSE file in the root directory of this source tree.
 
-package org.pytorch.demo.objectdetection;
+package org.pytorch.demo.objectdetection.helpers;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -24,6 +24,8 @@ import androidx.camera.core.ImageProxy;
 import androidx.camera.core.Preview;
 import androidx.camera.core.PreviewConfig;
 import androidx.core.app.ActivityCompat;
+
+import org.pytorch.demo.objectdetection.detection.BaseModuleActivity;
 
 public abstract class AbstractCameraXActivity<R> extends BaseModuleActivity {
     private static final int REQUEST_CODE_CAMERA_PERMISSION = 200;

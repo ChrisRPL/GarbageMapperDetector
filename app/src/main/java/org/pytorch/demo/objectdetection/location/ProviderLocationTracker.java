@@ -1,4 +1,4 @@
-package org.pytorch.demo.objectdetection;
+package org.pytorch.demo.objectdetection.location;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -15,13 +15,14 @@ public class ProviderLocationTracker  implements LocationListener, LocationTrack
     // The minimum time between updates in milliseconds
     private static final long MIN_UPDATE_TIME = 1000;
 
-    private LocationManager lm;
+    private final LocationManager lm;
 
     public enum ProviderType{
         NETWORK,
         GPS
-    };
-    private String provider;
+    }
+
+    private final String provider;
 
     private Location lastLocation;
     private long lastTime;

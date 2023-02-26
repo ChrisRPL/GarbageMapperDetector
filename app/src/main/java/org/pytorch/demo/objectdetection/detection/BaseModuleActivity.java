@@ -4,7 +4,7 @@
 // This source code is licensed under the BSD-style license found in the
 // LICENSE file in the root directory of this source tree.
 
-package org.pytorch.demo.objectdetection;
+package org.pytorch.demo.objectdetection.detection;
 
 import android.os.Bundle;
 import android.os.Handler;

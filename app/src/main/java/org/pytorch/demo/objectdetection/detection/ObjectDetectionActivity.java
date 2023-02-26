@@ -1,4 +1,4 @@
-package org.pytorch.demo.objectdetection;
+package org.pytorch.demo.objectdetection.detection;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -25,6 +25,13 @@ import org.pytorch.IValue;
 import org.pytorch.LiteModuleLoader;
 import org.pytorch.Module;
 import org.pytorch.Tensor;
+import org.pytorch.demo.objectdetection.helpers.AbstractCameraXActivity;
+import org.pytorch.demo.objectdetection.MainActivity;
+import org.pytorch.demo.objectdetection.helpers.PrePostProcessor;
+import org.pytorch.demo.objectdetection.R;
+import org.pytorch.demo.objectdetection.helpers.ResultView;
+import org.pytorch.demo.objectdetection.location.FallbackLocationTracker;
+import org.pytorch.demo.objectdetection.models.Result;
 import org.pytorch.torchvision.TensorImageUtils;
 
 import java.io.ByteArrayOutputStream;
@@ -37,8 +44,8 @@ public class ObjectDetectionActivity extends AbstractCameraXActivity<ObjectDetec
     private Module mModule = null;
     private ResultView mResultView;
     private FallbackLocationTracker tracker;
-    static double latitude = 0;
-    static double longitude = 0;
+    public static double latitude = 0;
+    public static double longitude = 0;
 
     static class AnalysisResult {
         private final ArrayList<Result> mResults;

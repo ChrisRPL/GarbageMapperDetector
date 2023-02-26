@@ -11,6 +11,8 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 
+import org.pytorch.demo.objectdetection.detection.ObjectDetectionActivity;
+import org.pytorch.demo.objectdetection.helpers.PrePostProcessor;
 import org.pytorch.demo.objectdetection.models.Drone;
 
 import java.io.BufferedReader;
@@ -24,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    static Drone drone = new Drone(
+    public static Drone drone = new Drone(
             "5L3jvTMyRFf45dFSQqcc",
             "Discovery",
             3,
