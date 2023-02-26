@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "41206483940",
+    "project_id": "garbagemap-5a1e8",
+    "storage_bucket": "garbagemap-5a1e8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:41206483940:android:f99f325c3c7ca859f955f1",
+        "android_client_info": {
+          "package_name": "org.pytorch.demo.objectdetection"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "41206483940-mtut8pn5i9h99541utc336doif9sde1p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0I1Bp9TGZFkPUJ7-b4YWa72v1zaOWLAU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "41206483940-mtut8pn5i9h99541utc336doif9sde1p.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "41206483940-bia1fss3j4q362iuk4bmags35chca9vs.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.solveitmobile"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
